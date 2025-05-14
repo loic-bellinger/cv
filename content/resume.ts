@@ -1,0 +1,110 @@
+import type { Resume } from '~/types/resume'
+
+export const resume: Resume = {
+  name: 'Alex Johnson',
+  initials: 'AJ',
+  location: { label: 'Berlin, Germany, CEST', href: 'https://www.google.com/maps/place/Berlin' },
+  about:
+    'Detail-oriented Full Stack Developer passionate about building scalable web applications and intuitive user experiences.',
+  summary:
+    'Full Stack Developer with 8+ years of experience in designing and implementing high-performance React frontends and robust Node.js backends. Skilled in agile methodologies, cloud deployment, and team collaboration.',
+  avatarUrl: '/avatar.png',
+  contacts: [
+    { label: 'Contact me via email', href: 'mailto:alex.johnson@example.com', icon: 'i-ri-mail-line' },
+    { label: 'Contact me by phone', href: 'tel:+4915123456789', icon: 'i-ri-phone-line' },
+    { label: 'Check my GitHub profile', href: 'https://github.com/alexjohnson', icon: 'i-ri-github-fill' },
+    {
+      label: 'Check my LinkedIn account',
+      href: 'https://www.linkedin.com/in/alex-johnson-dev/',
+      icon: 'i-ri-linkedin-box-fill'
+    }
+  ],
+  work: [
+    {
+      company: 'InnovateX',
+      link: 'https://innovatex.example.com',
+      badges: ['On Site', 'React', 'TypeScript', 'Node.js', 'AWS'],
+      title: 'Lead Frontend Engineer',
+      logo: 'InnovateXLogo',
+      start: '2022',
+      end: null,
+      description:
+        'Leading the frontend team to build a next-generation analytics dashboard for enterprise clients.',
+      highlights: [
+        'Architected component library with Storybook and Tailwind CSS',
+        'Optimized content visualization performance, reducing load times by 40%',
+        'Mentored junior developers and conducted weekly code reviews'
+      ]
+    },
+    {
+      company: 'Acme Corp',
+      link: 'https://acmecorp.example.com',
+      badges: ['Remote', 'Vue.js', 'JavaScript', 'Docker'],
+      title: 'Software Engineer',
+      logo: 'AcmeLogo',
+      start: '2018',
+      end: '2022',
+      description:
+        'Developed customer-facing applications and internal tools to streamline operations.',
+      highlights: [
+        'Built a real-time order tracking system using WebSockets',
+        'Containerized services with Docker and Kubernetes for scalable deployments',
+        'Collaborated with UX designers to enhance UI accessibility'
+      ]
+    }
+  ],
+  education: [
+    {
+      school: 'Technical University of Berlin',
+      degree: 'Master\'s Degree in Computer Science',
+      start: '2014',
+      end: '2016'
+    },
+    {
+      school: 'University of Leipzig',
+      degree: 'Bachelor\'s Degree in Information Technology',
+      start: '2010',
+      end: '2014'
+    }
+  ],
+  skills: [
+    'JavaScript/TypeScript',
+    'React',
+    'Vue.js',
+    'Node.js',
+    'GraphQL',
+    'REST APIs',
+    'Docker & Kubernetes',
+    'AWS & Azure',
+    'Agile/Scrum',
+    'Tailwind CSS'
+  ],
+  projects: [
+    {
+      title: 'DataViz Pro',
+      techStack: ['TypeScript', 'React', 'D3.js', 'Next.js'],
+      description: 'A customizable content visualization platform for business intelligence teams.',
+      logo: 'DataVizLogo',
+      link: { label: 'datavizpro.com', href: 'https://datavizpro.example.com' }
+    },
+    {
+      title: 'ChatFlow',
+      techStack: ['Vue.js', 'Node.js', 'Socket.io', 'MongoDB'],
+      description:
+        'Real-time chat application with support for channels, direct messaging, and media sharing.',
+      logo: 'ChatFlowLogo',
+      link: { label: 'chatflow.example.com', href: 'https://chatflow.example.com' }
+    },
+    {
+      title: 'Resume Builder',
+      techStack: ['Vue.js', 'Vite', 'Tailwind CSS', 'Firebase'],
+      description:
+        'Open-source tool for designing and exporting modern resumes as PDF or Markdown.',
+      logo: 'ResumeBuilderLogo',
+      link: {
+        label: 'github.com/alexjohnson/resume-builder',
+        href: 'https://github.com/alexjohnson/resume-builder'
+      }
+    }
+  ]
+}

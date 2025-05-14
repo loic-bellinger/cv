@@ -13,27 +13,36 @@ concurrency:
 
 jobs:
   build:
+    env:
+      # Sets base URL for the app; ensures nuxt/iamge _ipx folder links correctly
+      NUXT_APP_BASE_URL: ${{ format('/{0}/', github.event.repository.name) }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
         with:
-          path: |
-            ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-      - name: Install bun
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+
+      - name: Install Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: "1.2.12"
-      - name: Install dependencies
-        run: bun install --ignore-scripts --frozen-lockfile
-      - name: Build app
+          bun-version: 1.2.12
+
+      - name: Install project dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build Nuxt application
         run: bunx nuxt build --preset github_pages
-      - name: Upload artifact
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./.output/public
-  # Deployment job
+
   deploy:
     # Add a dependency to the build job
     needs: build
