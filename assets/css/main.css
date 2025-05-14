@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+.lol {
+
+    margin: 0 !important ;
+}
