@@ -17,6 +17,7 @@
       "devDependencies": {
         "@commitlint/cli": "^19.8.1",
         "@commitlint/config-conventional": "^19.8.1",
+        "@iconify-json/ri": "^1.2.5",
         "husky": "^9.1.7",
         "lint-staged": "^16.0.0",
       },
@@ -240,6 +241,8 @@
     "@humanwhocodes/module-importer": ["@humanwhocodes/module-importer@1.0.1", "", {}, "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA=="],
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
+
+    "@iconify-json/ri": ["@iconify-json/ri@1.2.5", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-kWGimOXMZrlYusjBKKXYOWcKhbOHusFsmrmRGmjS7rH0BpML5A9/fy8KHZqFOwZfC4M6amObQYbh8BqO5cMC3w=="],
 
     "@iconify/collections": ["@iconify/collections@1.0.548", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-wrty7ECTo7uL7F8go2oPcpZsP/XDK4nc2zbKH4jdb1lT3PVWxWsrmgtHSbXFqDqBw3dUYO13xowGteuc9s/v9Q=="],
 
