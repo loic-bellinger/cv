@@ -87,8 +87,6 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
         </div>
       </section>
 
-      <USeparator />
-
       <section id="skills">
         <h2>
           Skills
