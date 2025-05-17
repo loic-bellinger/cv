@@ -11,12 +11,12 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
       role="main"
       class="space-y-8 py-8 md:py-10 max-w-4xl"
     >
-      <header class="flex justify-between">
-        <div class="pr-2">
+      <header class="flex flex-wrap-reverse md:flex-nowrap justify-between gap-y-(--space-2xs-xs) gap-x-(--space-2xl-3xl)">
+        <div>
           <h1>
             {{ resume.name }}
           </h1>
-          <p class="text-lg max-w-xl">
+          <p class="text-lg">
             {{ resume.about }}
           </p>
           <p>
@@ -46,7 +46,7 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
           :src="resume.avatarUrl"
           :alt="`Portrait of ${resume.name}`"
           icon="i-lucide-image"
-          size="responsive"
+          class="size-(--square-64-144)"
           sizes="64px sm:80px md:96px lg:112px xl:128px xxl:144px"
           format="avif,webp,jpeg,jpg,png"
         />
