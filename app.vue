@@ -92,10 +92,20 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
           Skills
         </h2>
         <ul
-          v-for="(skill, index) in resume.skills"
-          :key="index"
+          class="flex flex-wrap gap-(--space-3xs-2xs)"
         >
-          <li>{{ skill }}</li>
+          <li
+            v-for="(skill, index) in resume.skills"
+            :key="index"
+          >
+            <UBadge
+              color="neutral"
+              variant="subtle"
+              size="lg"
+            >
+              {{ skill }}
+            </UBadge>
+          </li>
         </ul>
       </section>
 

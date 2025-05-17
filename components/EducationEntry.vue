@@ -6,11 +6,11 @@ defineProps<EducationEntry>()
 
 <template>
   <article>
-    <div class="flex flex-wrap justify-between">
-      <h3 class="mr-4">
+    <div class="mb-(--space-2xs-xs)">
+      <h3 class="mb-0">
         {{ school }}
       </h3>
-      <p class="italic text-gray-100">
+      <p class="text-sm italic text-dimmed">
         <time :datetime="start">{{ start }}</time> -
         <time :datetime="end ?? `${new Date().toISOString()}`">{{ end ?? 'Present' }}</time>
       </p>
