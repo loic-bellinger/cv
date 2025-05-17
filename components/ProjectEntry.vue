@@ -5,16 +5,32 @@ defineProps<ProjectEntry>()
 </script>
 
 <template>
-  <article>
-    <h3>
-      <a :href="link.href">{{ title }}</a>
-    </h3>
+  <UCard
+    as="article"
+    variant="outline"
+  >
+    <template #header>
+      <h3 class="mb-0">
+        <a :href="link.href">{{ title }}</a>
+      </h3>
+    </template>
+
     <p>{{ description }}</p>
-    <ul
-      v-for="(tech, index) in techStack"
-      :key="index"
-    >
-      <li>{{ tech }}</li>
-    </ul>
-  </article>
+
+    <template #footer>
+      <ul class="flex gap-(--space-3xs-2xs)">
+        <li
+          v-for="(tech, index) in techStack"
+          :key="index"
+        >
+          <UBadge
+            size="xs"
+            variant="soft"
+          >
+            {{ tech }}
+          </UBadge>
+        </li>
+      </ul>
+    </template>
+  </UCard>
 </template>

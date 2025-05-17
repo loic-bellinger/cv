@@ -113,7 +113,7 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
         <h2>
           Projects
         </h2>
-        <div class="space-y-4">
+        <div class="grid grid-cols-3 gap-(--space-xs-s)">
           <ProjectEntry
             v-for="(entry, index) in resume.projects"
             :key="index"
