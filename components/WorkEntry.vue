@@ -6,11 +6,11 @@ defineProps<WorkEntry>()
 
 <template>
   <article>
-    <div class="flex flex-wrap justify-between">
-      <h3 class="mr-4">
+    <div class="mb-(--space-3xs-2xs)">
+      <h3 class="mb-0">
         {{ company }}
       </h3>
-      <p class="italic text-gray-100">
+      <p class="text-sm italic text-dimmed">
         <time :datetime="start">{{ start }}</time> -
         <time :datetime="end ?? `${new Date().toISOString()}`">{{ end ?? 'Present' }}</time>
       </p>
@@ -25,10 +25,8 @@ defineProps<WorkEntry>()
         {{ highlight }}
       </li>
     </ul>
-    <UButtonGroup
-      as="ul"
-      class="space-x-1"
-      size="sm"
+    <ul
+      class="flex gap-(--space-3xs-2xs)"
     >
       <li
         v-for="(badge, index) in badges"
@@ -36,11 +34,11 @@ defineProps<WorkEntry>()
       >
         <UBadge
           color="neutral"
-          variant="subtle"
+          variant="soft"
         >
           {{ badge }}
         </UBadge>
       </li>
-    </UButtonGroup>
+    </ul>
   </article>
 </template>
