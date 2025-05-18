@@ -10,16 +10,16 @@ export const resume: Resume = {
     'Full Stack Developer with 8+ years of experience in designing and implementing high-performance React frontends and robust Node.js backends. Skilled in agile methodologies, cloud deployment, and team collaboration.',
   avatarUrl: '/avatar.png',
   contacts: [
-    { ariaLabel: 'Send an email to Alex Johnson', href: 'mailto:alex.johnson@example.com', icon: 'i-ri-mail-line' },
-    { ariaLabel: 'Call Alex Johnson by phone', ariaDescribedBy: 'Initiates a phone call on supported devices', href: 'tel:+4915123456789', icon: 'i-ri-phone-line' },
-    { ariaLabel: 'Visit Alex Johnson’s GitHub profile', ariaDescribedBy: 'Opens GitHub in a new tab', href: 'https://github.com/alexjohnson', icon: 'i-ri-github-fill' },
+    { ariaLabel: 'Send an email to Alex Johnson', ariaDescribedBy: 'Opens default mail client with a new message addressed to Alex Johnson', href: 'mailto:alex.johnson@example.com', icon: 'i-lucide-mail' },
+    { ariaLabel: 'Call Alex Johnson by phone', ariaDescribedBy: 'Initiates a phone call on supported devices', href: 'tel:+4915123456789', icon: 'i-lucide-phone' },
+    { ariaLabel: 'Visit Alex Johnson’s GitHub profile', ariaDescribedBy: 'Opens GitHub in a new tab', href: 'https://github.com/alexjohnson', icon: 'i-lucide-github' },
     {
       ariaLabel: 'Visit Alex Johnson’s LinkedIn profile', ariaDescribedBy: 'Opens LinkedIn in a new tab',
       href: 'https://www.linkedin.com/in/alex-johnson-dev/',
-      icon: 'i-ri-linkedin-box-fill'
+      icon: 'i-lucide-linkedin'
     }
   ],
-  work: [
+  experience: [
     {
       company: 'InnovateX',
       link: 'https://innovatex.example.com',
@@ -85,7 +85,7 @@ export const resume: Resume = {
       techStack: ['TypeScript', 'React', 'D3.js', 'Next.js'],
       description: 'A customizable content visualization platform for business intelligence teams.',
       logo: 'DataVizLogo',
-      link: { ariaLabel: '', href: 'https://datavizpro.example.com' }
+      link: { ariaLabel: '', ariaDescribedBy: '', href: 'https://datavizpro.example.com' }
     },
     {
       title: 'ChatFlow',
@@ -93,7 +93,7 @@ export const resume: Resume = {
       description:
         'Real-time chat application with support for channels, direct messaging, and media sharing.',
       logo: 'ChatFlowLogo',
-      link: { ariaLabel: '', href: 'https://chatflow.example.com' }
+      link: { ariaLabel: '', ariaDescribedBy: '', href: 'https://chatflow.example.com' }
     },
     {
       title: 'Resume Builder',
@@ -103,7 +103,8 @@ export const resume: Resume = {
       logo: 'ResumeBuilderLogo',
       link: {
         href: 'https://github.com/alexjohnson/resume-builder',
-        ariaLabel: ''
+        ariaLabel: '',
+        ariaDescribedBy: ''
       }
     }
   ]

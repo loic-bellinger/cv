@@ -7,7 +7,7 @@ export interface LinkBase {
 export interface ContactEntry extends LinkBase {
   icon: string
 }
-export interface WorkEntry {
+export interface ExperienceEntry {
   company: string
   link: string
   badges: string[]
@@ -43,7 +43,7 @@ export interface Resume {
   avatarUrl: string
   contacts: ContactEntry[]
   education: EducationEntry[]
-  work: WorkEntry[]
+  experience: ExperienceEntry[]
   skills: string[]
   projects: ProjectEntry[]
 }

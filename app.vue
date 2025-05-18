@@ -1,15 +1,26 @@
 <script setup lang="ts">
 import { resume } from '~/content/resume.ts'
+import ExperienceEntry from '~/components/ExperienceEntry.vue'
 </script>
 
 <template>
   <UApp>
+    <header class="bg-default/75 backdrop-blur border-b border-default h-(--ui-header-height) sticky top-0 z-50">
+      <div class="w-full max-w-(--ui-container) mx-auto flex items-center justify-between h-full">
+        <div class="ml-auto">
+          <ColorModeSelect />
+        </div>
+      </div>
+    </header>
     <UContainer
       as="main"
       role="main"
-      class="space-y-8 py-8 md:py-10 max-w-4xl"
+      class="w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-8 py-8 md:py-10 max-w-4xl"
     >
-      <header class="flex flex-wrap-reverse md:flex-nowrap justify-between gap-y-(--space-2xs-xs) gap-x-(--space-2xl-3xl)">
+      <section
+        id="intro"
+        class="flex flex-wrap-reverse md:flex-nowrap justify-between gap-y-(--space-2xs-xs) gap-x-(--space-2xl-3xl)"
+      >
         <div>
           <h1>
             {{ resume.name }}
@@ -45,11 +56,11 @@ import { resume } from '~/content/resume.ts'
           :src="resume.avatarUrl"
           :alt="`Portrait of ${resume.name}`"
           icon="i-lucide-image"
-          class="size-(--square-64-144)"
+          :ui="{ root: 'rounded-[10px] size-(--square-64-144)' }"
           sizes="64px sm:80px md:96px lg:112px xl:128px xxl:144px"
           format="avif,webp,jpeg,jpg,png"
         />
-      </header>
+      </section>
 
       <section id="about">
         <h2>
@@ -62,11 +73,11 @@ import { resume } from '~/content/resume.ts'
 
       <section id="work-experience">
         <h2>
-          Work Experience
+          Experience
         </h2>
         <div class="space-y-4">
-          <WorkEntry
-            v-for="(entry, index) in resume.work"
+          <ExperienceEntry
+            v-for="(entry, index) in resume.experience"
             :key="index"
             v-bind="entry"
           />
