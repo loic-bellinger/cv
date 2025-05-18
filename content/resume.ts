@@ -3,18 +3,18 @@ import type { Resume } from '~/types/resume'
 export const resume: Resume = {
   name: 'Alex Johnson',
   initials: 'AJ',
-  location: { label: 'Berlin, Germany, CEST', href: 'https://www.google.com/maps/place/Berlin' },
+  location: { text: 'Berlin, Germany, CEST', ariaLabel: 'View map of Berlin, Germany', ariaDescribedBy: 'Opens Google Maps in a new tab', href: 'https://www.google.com/maps/place/Berlin' },
   about:
     'Detail-oriented Full Stack Developer passionate about building scalable web applications and intuitive user experiences.',
   summary:
     'Full Stack Developer with 8+ years of experience in designing and implementing high-performance React frontends and robust Node.js backends. Skilled in agile methodologies, cloud deployment, and team collaboration.',
   avatarUrl: '/avatar.png',
   contacts: [
-    { label: 'Contact me via email', href: 'mailto:alex.johnson@example.com', icon: 'i-ri-mail-line' },
-    { label: 'Contact me by phone', href: 'tel:+4915123456789', icon: 'i-ri-phone-line' },
-    { label: 'Check my GitHub profile', href: 'https://github.com/alexjohnson', icon: 'i-ri-github-fill' },
+    { ariaLabel: 'Send an email to Alex Johnson', href: 'mailto:alex.johnson@example.com', icon: 'i-ri-mail-line' },
+    { ariaLabel: 'Call Alex Johnson by phone', ariaDescribedBy: 'Initiates a phone call on supported devices', href: 'tel:+4915123456789', icon: 'i-ri-phone-line' },
+    { ariaLabel: 'Visit Alex Johnson’s GitHub profile', ariaDescribedBy: 'Opens GitHub in a new tab', href: 'https://github.com/alexjohnson', icon: 'i-ri-github-fill' },
     {
-      label: 'Check my LinkedIn account',
+      ariaLabel: 'Visit Alex Johnson’s LinkedIn profile', ariaDescribedBy: 'Opens LinkedIn in a new tab',
       href: 'https://www.linkedin.com/in/alex-johnson-dev/',
       icon: 'i-ri-linkedin-box-fill'
     }
@@ -85,7 +85,7 @@ export const resume: Resume = {
       techStack: ['TypeScript', 'React', 'D3.js', 'Next.js'],
       description: 'A customizable content visualization platform for business intelligence teams.',
       logo: 'DataVizLogo',
-      link: { label: 'datavizpro.com', href: 'https://datavizpro.example.com' }
+      link: { ariaLabel: '', href: 'https://datavizpro.example.com' }
     },
     {
       title: 'ChatFlow',
@@ -93,7 +93,7 @@ export const resume: Resume = {
       description:
         'Real-time chat application with support for channels, direct messaging, and media sharing.',
       logo: 'ChatFlowLogo',
-      link: { label: 'chatflow.example.com', href: 'https://chatflow.example.com' }
+      link: { ariaLabel: '', href: 'https://chatflow.example.com' }
     },
     {
       title: 'Resume Builder',
@@ -102,8 +102,8 @@ export const resume: Resume = {
         'Open-source tool for designing and exporting modern resumes as PDF or Markdown.',
       logo: 'ResumeBuilderLogo',
       link: {
-        label: 'github.com/alexjohnson/resume-builder',
-        href: 'https://github.com/alexjohnson/resume-builder'
+        href: 'https://github.com/alexjohnson/resume-builder',
+        ariaLabel: ''
       }
     }
   ]

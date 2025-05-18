@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { resume } from '~/content/resume.ts'
-
-const accessibleLocationLabel = createAccessibleElementLabel(resume.location.label, true, 'Check the location of', 'on Google Maps')
 </script>
 
 <template>
@@ -20,14 +18,15 @@ const accessibleLocationLabel = createAccessibleElementLabel(resume.location.lab
             {{ resume.about }}
           </p>
           <p>
-            <ULink
-              :href="resume.location.href"
-              target="_blank"
-              :aria-label="accessibleLocationLabel"
-              :title="accessibleLocationLabel"
-              class="hover:underline"
-            >{{ resume.location.label }}
-            </ULink>
+            <UTooltip :text="resume.location.ariaDescribedBy">
+              <ULink
+                :href="resume.location.href"
+                target="_blank"
+                :aria-label="resume.location.ariaLabel"
+                class="hover:underline"
+              >{{ resume.location.text }}
+              </ULink>
+            </UTooltip>
           </p>
           <address class="mt-2 md:mt-3">
             <UButtonGroup

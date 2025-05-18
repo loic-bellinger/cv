@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import type { ContactEntry } from '~/types/resume'
 
-const props = defineProps<ContactEntry>()
-
-const accessibleLabel = createAccessibleElementLabel(props.label, true)
+defineProps<ContactEntry>()
 </script>
 
 <template>
   <li>
-    <UButton
-      :href
-      :icon
-      :aria-label="accessibleLabel"
-      :title="accessibleLabel"
-      target="_blank"
-      color="neutral"
-      variant="outline"
-    />
+    <UTooltip :text="ariaLabel">
+      <UButton
+        :href
+        :icon
+        :aria-label="accessibleLabel"
+        target="_blank"
+        color="neutral"
+        variant="outline"
+      />
+    </UTooltip>
   </li>
 </template>

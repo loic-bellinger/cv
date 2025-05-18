@@ -11,7 +11,10 @@ defineProps<ProjectEntry>()
   >
     <template #header>
       <h3 class="mb-0">
-        <a :href="link.href">{{ title }}</a>
+        <a
+          :href="link.href"
+          :aria-label="link.ariaLabel"
+        >{{ title }}</a>
       </h3>
     </template>
 

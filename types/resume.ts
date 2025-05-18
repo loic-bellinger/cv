@@ -1,9 +1,12 @@
-export interface ContactEntry {
-  label: string
+export interface LinkBase {
+  text?: string
+  ariaLabel: string
+  ariaDescribedBy: string
   href: string
+}
+export interface ContactEntry extends LinkBase {
   icon: string
 }
-
 export interface WorkEntry {
   company: string
   link: string
@@ -28,13 +31,13 @@ export interface ProjectEntry {
   techStack: string[]
   description: string
   logo: string
-  link: { label: string, href: string }
+  link: LinkBase
 }
 
 export interface Resume {
   name: string
   initials: string
-  location: { label: string, href: string }
+  location: LinkBase
   about: string
   summary: string
   avatarUrl: string
