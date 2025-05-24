@@ -6,11 +6,11 @@ defineProps<ContactEntry>()
 
 <template>
   <li>
-    <UTooltip :text="ariaDescribedBy">
+    <UTooltip :text="$rt(ariaDescribedBy)">
       <UButton
         :href
         :icon
-        :aria-label="ariaLabel"
+        :aria-label="$rt(ariaLabel)"
         target="_blank"
         color="neutral"
         variant="outline"
