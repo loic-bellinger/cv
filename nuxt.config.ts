@@ -8,11 +8,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'Alex Johnson\'s Resume',
       htmlAttrs: {
         lang: 'en'
       },
       link: [
+        { rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL },
         { rel: 'icon', type: 'image/png', href: process.env.NUXT_APP_BASE_URL ? `${process.env.NUXT_APP_BASE_URL}favicon.png` : '/favicon.png' }
       ]
     }

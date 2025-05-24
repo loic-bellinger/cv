@@ -19,7 +19,7 @@ export const resume: Resume = {
       icon: 'i-lucide-linkedin'
     }
   ],
-  experience: [
+  work: [
     {
       company: 'InnovateX',
       link: 'https://innovatex.example.com',

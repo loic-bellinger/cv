@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { resume } from '~/content/resume.ts'
-import ExperienceEntry from '~/components/ExperienceEntry.vue'
+import { seoMeta } from '~/content/seo.ts'
+
+if (import.meta.server) {
+  useHead({
+    title: resume.name,
+    titleTemplate: '%s Resume'
+  })
+  useSeoMeta(seoMeta)
+}
 </script>
 
 <template>
@@ -73,11 +81,11 @@ import ExperienceEntry from '~/components/ExperienceEntry.vue'
 
       <section id="work-experience">
         <h2>
-          Experience
+          Work Experience
         </h2>
         <div class="space-y-4">
-          <ExperienceEntry
-            v-for="(entry, index) in resume.experience"
+          <WorkEntry
+            v-for="(entry, index) in resume.work"
             :key="index"
             v-bind="entry"
           />
