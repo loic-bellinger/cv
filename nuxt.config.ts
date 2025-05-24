@@ -1,10 +1,5 @@
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/image',
-    '@nuxt/test-utils',
-    '@nuxt/ui'
-  ],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/test-utils', '@nuxt/ui', '@nuxtjs/i18n'],
   devtools: { enabled: true },
   app: {
     head: {
@@ -24,6 +19,20 @@ export default defineNuxtConfig({
       stylistic: {
         commaDangle: 'never'
       }
+    }
+  },
+  i18n: {
+    defaultLocale: 'en',
+    strategy: 'prefix_and_default',
+    locales: [
+      { code: 'en', name: 'English', file: 'en-US.ts' },
+      { code: 'fr', name: 'French', file: 'fr-FR.ts' }
+    ],
+    lazy: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
     }
   },
   icon: {
