@@ -12,13 +12,13 @@ defineProps<ProjectEntry>()
     <template #header>
       <h3 class="mb-0">
         <a
-          :href="link.href"
-          :aria-label="link.ariaLabel"
-        >{{ title }}</a>
+          :href="$rt(link.href)"
+          :aria-label="$rt(link.ariaLabel)"
+        >{{ $rt(title) }}</a>
       </h3>
     </template>
 
-    <p>{{ description }}</p>
+    <p>{{ $rt(description) }}</p>
 
     <template #footer>
       <ul class="flex gap-(--space-3xs-2xs)">
@@ -30,7 +30,7 @@ defineProps<ProjectEntry>()
             size="xs"
             variant="soft"
           >
-            {{ tech }}
+            {{ $rt(tech) }}
           </UBadge>
         </li>
       </ul>

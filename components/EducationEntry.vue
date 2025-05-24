@@ -8,13 +8,13 @@ defineProps<EducationEntry>()
   <article>
     <div class="mb-(--space-3xs-2xs)">
       <h3 class="mb-0">
-        {{ school }}
+        {{ $rt(school) }}
       </h3>
-      <p class="text-sm italic text-dimmed">
-        <time :datetime="start">{{ start }}</time> -
-        <time :datetime="end ?? `${new Date().toISOString()}`">{{ end ?? 'Present' }}</time>
-      </p>
+      <BaseDateRange
+        :start
+        :end
+      />
     </div>
-    <p>{{ degree }}</p>
+    <p>{{ $rt(degree) }}</p>
   </article>
 </template>

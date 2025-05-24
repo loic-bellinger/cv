@@ -8,21 +8,21 @@ defineProps<WorkEntry>()
   <article>
     <div class="mb-(--space-3xs-2xs)">
       <h3 class="mb-0">
-        {{ company }}
+        {{ $rt(company) }}
       </h3>
-      <p class="text-sm italic text-dimmed">
-        <time :datetime="start">{{ start }}</time> -
-        <time :datetime="end ?? `${new Date().toISOString()}`">{{ end ?? 'Present' }}</time>
-      </p>
+      <BaseDateRange
+        :start
+        :end
+      />
     </div>
-    <h4>{{ title }}</h4>
-    <p>{{ description }}</p>
+    <h4>{{ $rt(title) }}</h4>
+    <p>{{ $rt(description) }}</p>
     <ul class="list-inside list-disc text-sm py-2">
       <li
         v-for="(highlight, index) in highlights"
         :key="index"
       >
-        {{ highlight }}
+        {{ $rt(highlight) }}
       </li>
     </ul>
     <ul
@@ -36,7 +36,7 @@ defineProps<WorkEntry>()
           color="neutral"
           variant="soft"
         >
-          {{ badge }}
+          {{ $rt(badge) }}
         </UBadge>
       </li>
     </ul>
