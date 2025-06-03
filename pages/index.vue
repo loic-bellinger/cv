@@ -120,7 +120,3 @@
     </UContainer>
   </UApp>
 </template>
-
-<script setup lang="ts">
-import LanguageSelect from '~/components/LocaleSelect.vue'
-</script>

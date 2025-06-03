@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/test-utils', '@nuxt/ui', '@nuxtjs/i18n'],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-05-15',
   eslint: {
     config: {
       stylistic: {
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       scan: true,
 
       // Fixed list:
-      icons: ['lucide:refresh-cw', 'lucide:check', 'lucide:chevron-down', 'lucide:mail', 'lucide:phone', 'lucide:github', 'lucide:linkedin']
+      icons: ['lucide:loader-circle', 'lucide:check', 'lucide:chevron-down', 'lucide:mail', 'lucide:phone', 'lucide:github', 'lucide:linkedin']
     }
   }
 })
