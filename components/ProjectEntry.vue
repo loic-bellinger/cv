@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ProjectEntry } from '~/types/resume'
+import type { Project } from '~/types/resume'
 
-defineProps<ProjectEntry>()
+defineProps<Project>()
 </script>
 
 <template>

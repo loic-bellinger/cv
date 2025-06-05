@@ -145,5 +145,5 @@ export default defineI18nLocale(async () => {
       title: 'CV de @:name',
       avatarAlt: 'Photo de @:name{\'’s\'}'
     }
-  } as Resume
+  } satisfies Resume
 })

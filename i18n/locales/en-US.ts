@@ -35,7 +35,7 @@ export default defineI18nLocale(async () => {
         icon: 'i-lucide-github'
       },
       {
-        ariaLabel: 'Visit @:name{\'’s\'} LinkedIn profile\', ariaDescribedBy: \'Opens LinkedIn in a new tab',
+        ariaLabel: 'Visit @:name{\'’s\'} LinkedIn profile',
         ariaDescribedBy: 'Opens LinkedIn in a new tab',
         href: 'https://www.linkedin.com/in/alex-johnson-dev/',
         icon: 'i-lucide-linkedin'
@@ -144,5 +144,5 @@ export default defineI18nLocale(async () => {
       title: '@:name{\'’s\'} CV',
       avatarAlt: '@:name{\'’s\'} Profile Photo'
     }
-  } as Resume
+  } satisfies Resume
 })

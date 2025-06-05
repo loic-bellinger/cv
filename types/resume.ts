@@ -1,13 +1,15 @@
-export interface LinkBase {
+export interface BaseLink {
   text?: string
   ariaLabel: string
   ariaDescribedBy: string
   href: string
 }
-export interface ContactEntry extends LinkBase {
+
+export interface Contact extends BaseLink {
   icon: string
 }
-export interface WorkEntry {
+
+export interface Work {
   company: string
   link: string
   badges: string[]
@@ -19,31 +21,46 @@ export interface WorkEntry {
   highlights: string[]
 }
 
-export interface EducationEntry {
+export interface Education {
   school: string
   degree: string
   start: string
   end: string | null
 }
 
-export interface ProjectEntry {
+export interface Project {
   title: string
   techStack: string[]
   description: string
   logo: string
-  link: LinkBase
+  link: BaseLink
 }
 
 export interface Resume {
   name: string
   initials: string
-  location: LinkBase
+  location: BaseLink
   about: string
   summary: string
   avatarUrl: string
-  contacts: ContactEntry[]
-  education: EducationEntry[]
-  work: WorkEntry[]
+  contacts: Contact[]
+  education: Education[]
+  work: Work[]
   skills: string[]
-  projects: ProjectEntry[]
+  projects: Project[]
+  ui: {
+    colorMode: {
+      light: string
+      dark: string
+      system: string
+      loading: string
+    }
+    dates: {
+      today: string
+    }
+  }
+  seo: {
+    title: string
+    avatarAlt: string
+  }
 }

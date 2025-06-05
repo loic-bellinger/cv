@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
-    bundle: { runtimeOnly: true },
+    bundle: { runtimeOnly: true, optimizeTranslationDirective: false },
     locales: [
       { code: 'en', name: 'English', file: 'en-US.ts', language: 'en-US' },
       { code: 'fr', name: 'Français', file: 'fr-FR.ts', language: 'fr-FR' }

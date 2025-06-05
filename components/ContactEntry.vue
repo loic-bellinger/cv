@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ContactEntry } from '~/types/resume'
+import type { Contact } from '~/types/resume'
 
-defineProps<ContactEntry>()
+defineProps<Contact>()
 </script>
 
 <template>

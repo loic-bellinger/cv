@@ -1,21 +1,14 @@
 <script setup  lang="ts">
-const props = defineProps({
-  start: {
-    type: String,
-    required: true
-  },
-  end: {
-    type: String,
-    default: null
-  },
-  dateStyle: {
-    type: String,
-    default: 'short'
-  }
-})
+interface Props {
+  start: string
+  end: string | null
+  dateStyle?: string
+}
 
-const startDate = new Date(props.start)
-const endDate = props.end ? new Date(props.end) : new Date()
+const { start, end, dateStyle = 'short' } = defineProps<Props>()
+
+const startDate = new Date(start)
+const endDate = end ? new Date(end) : new Date()
 </script>
 
 <template>

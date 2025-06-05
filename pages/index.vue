@@ -1,9 +1,13 @@
+<script setup lang="ts">
+const { t, tm } = useI18n()
+</script>
+
 <template>
   <UApp>
     <header class="bg-default/75 backdrop-blur border-b border-default h-(--ui-header-height) sticky top-0 z-50">
       <div class="w-full max-w-(--ui-container) mx-auto flex items-center justify-between h-full">
         <div class="ml-auto">
-          <LanguageSelect />
+          <LocaleSelect />
           <ColorModeSelect />
         </div>
       </div>
@@ -19,19 +23,19 @@
       >
         <div>
           <h1>
-            {{ $t('name') }}
+            {{ t('name') }}
           </h1>
           <p class="text-lg">
-            {{ $t('about') }}
+            {{ t('about') }}
           </p>
           <p>
-            <UTooltip :text="$t('location.ariaDescribedBy')">
+            <UTooltip :text="t('location.ariaDescribedBy')">
               <ULink
-                :href="$t('location.href')"
+                :href="t('location.href')"
                 target="_blank"
-                :aria-label="$t('location.ariaLabel')"
+                :aria-label="t('location.ariaLabel')"
                 class="hover:underline"
-              >{{ $t('location.text') }}
+              >{{ t('location.text') }}
               </ULink>
             </UTooltip>
           </p>
@@ -41,7 +45,7 @@
               class="space-x-1"
             >
               <ContactEntry
-                v-for="(entry, index) in $tm('contacts')"
+                v-for="(entry, index) in tm('contacts')"
                 :key="index"
                 v-bind="entry"
               />
@@ -49,8 +53,8 @@
           </address>
         </div>
         <UAvatar
-          :src="$t('avatarUrl')"
-          :alt="`Portrait of ${$t('name')}`"
+          :src="t('avatarUrl')"
+          :alt="`Portrait of ${t('name')}`"
           icon="i-lucide-image"
           :ui="{ root: 'rounded-[10px] size-(--square-64-144)' }"
           sizes="64px sm:80px md:96px lg:112px xl:128px xxl:144px"
@@ -61,7 +65,7 @@
       <section id="about">
         <h2>About</h2>
         <p>
-          {{ $t('summary') }}
+          {{ t('summary') }}
         </p>
       </section>
 
@@ -69,7 +73,7 @@
         <h2>Work Experience</h2>
         <div class="space-y-4">
           <WorkEntry
-            v-for="(entry, index) in $tm('work')"
+            v-for="(entry, index) in tm('work')"
             :key="index"
             v-bind="entry"
           />
@@ -80,7 +84,7 @@
         <h2>Education</h2>
         <div class="space-y-4">
           <EducationEntry
-            v-for="(entry, index) in $tm('education')"
+            v-for="(entry, index) in tm('education')"
             :key="index"
             v-bind="entry"
           />
@@ -93,7 +97,7 @@
           class="flex flex-wrap gap-(--space-3xs-2xs)"
         >
           <li
-            v-for="(skill, index) in $tm('skills')"
+            v-for="(skill, index) in tm('skills')"
             :key="index"
           >
             <UBadge
@@ -111,7 +115,7 @@
         <h2>Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-(--space-xs-s)">
           <ProjectEntry
-            v-for="(entry, index) in $tm('projects')"
+            v-for="(entry, index) in tm('projects')"
             :key="index"
             v-bind="entry"
           />

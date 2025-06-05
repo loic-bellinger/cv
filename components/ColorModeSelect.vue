@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
-const { t } = useI18n<{ ui: { colorMode: Record<string, string> } }>()
+const { t } = useI18n()
 const items = computed(() => colorMode.unknown
   ? []
   : [

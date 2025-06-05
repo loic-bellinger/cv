@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { EducationEntry } from '~/types/resume'
+import type { Education } from '~/types/resume'
 
-defineProps<EducationEntry>()
+defineProps<Education>()
 </script>
 
 <template>

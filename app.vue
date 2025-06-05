@@ -34,20 +34,20 @@ useSeoMeta({
   ogTitle: () => t('seo.title'),
   ogDescription: () => t('about'),
   ogSiteName: () => t('name'),
-  ogImage: {
+  ogImage: () => ({
     url: avatarUrl,
     width: 400,
     height: 400,
-    alt: () => t('seo.avatarAlt')
-  },
+    alt: t('seo.avatarAlt')
+  }),
   // Twitter Card
   twitterCard: 'summary_large_image',
   twitterTitle: () => t('seo.title'),
   twitterDescription: () => t('about'),
-  twitterImage: {
+  twitterImage: () => ({
     url: avatarUrl,
-    alt: () => t('seo.avatarAlt')
-  }
+    alt: t('seo.avatarAlt')
+  })
 })
 </script>
 
