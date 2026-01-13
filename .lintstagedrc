@@ -1,0 +1,3 @@
+{
+  "*.{astro,json,css,md}": "prettier --write --list-different"
+}
