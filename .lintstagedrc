@@ -1,3 +1,3 @@
 {
-  "*.{astro,json,css,md}": "prettier --write --list-different"
+  "*.{astro,json,css,md,ts}": "prettier --write --list-different"
 }

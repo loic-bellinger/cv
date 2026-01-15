@@ -1,0 +1,21 @@
+---
+type Props = {
+  start: Date;
+  end: Date | null;
+};
+
+const { start, end } = Astro.props;
+
+const fmt = new Intl.DateTimeFormat("en", { year: "numeric" });
+
+const startLabel = fmt.format(start);
+const endLabel = end ? fmt.format(end) : "Present";
+
+const toISODate = (d: Date) => d.toISOString().slice(0, 10);
+---
+
+<p>
+  <time datetime={toISODate(start)}>{startLabel}</time>&nbsp;&ndash;&nbsp;{
+    end ? <time datetime={toISODate(end)}>{endLabel}</time> : endLabel
+  }
+</p>

@@ -1,17 +1,30 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Address from "@components/Address.astro";
+import WorkExperienceList from "@components/WorkExperienceList.astro";
 import { getCollection, getEntry } from "astro:content";
-const basics = await getEntry("basics", "basics");
-const contacts = await getCollection("contacts");
-if (!basics) {
-  throw new Error("Could not find basic informations");
+const profile = await getEntry("profile", "profile");
+if (!profile) {
+  throw new Error("Could not find basic profile information");
 }
+const contacts = await getCollection("contacts");
+const experience = await getCollection("experience");
 ---
 
-<BaseLayout pageTitle={basics.data.name}>
-  <h1>{basics.data.name}</h1>
-  <p>{basics.data.about}</p>
-  <p>{basics.data.location.text}</p>
+<BaseLayout pageTitle={profile.data.name}>
+  <h1>{profile.data.name}</h1>
+  <p>{profile.data.about}</p>
+  <p>{profile.data.location.text}</p>
   <Address contacts={contacts} />
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      {profile.data.about}
+    </p>
+  </section>
+
+  <section id="work-experience">
+    <h2>Work Experience</h2>
+    <WorkExperienceList experience={experience} />
+  </section>
 </BaseLayout>

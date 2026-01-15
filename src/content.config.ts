@@ -1,80 +1,88 @@
-import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
-import { z } from 'astro/zod';
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
-const basics = defineCollection({
-  loader: glob({ pattern: "basics.md", base: "./src/content/resume" }),
-  schema: z.object({
-    name: z.string(),
-    about: z.string(),
-    initials: z.string(),
-    summary: z.string(),
-    location: z.object({
-      text: z.string(),
-      ariaLabel: z.string(),
-      ariaDescribedBy: z.string(),
-      href: z.string().url(),
-    }),
-    avatarUrl: z.string(),
-    skills: z.array(z.string()),
-  }).strict(),
+const profile = defineCollection({
+  loader: glob({ pattern: "profile.md", base: "./src/content/resume" }),
+  schema: z
+    .object({
+      name: z.string(),
+      about: z.string(),
+      initials: z.string(),
+      summary: z.string(),
+      location: z.object({
+        text: z.string(),
+        ariaLabel: z.string(),
+        ariaDescribedBy: z.string(),
+        href: z.string().url(),
+      }),
+      avatarUrl: z.string(),
+      skills: z.array(z.string()),
+    })
+    .strict(),
 });
 
 const contacts = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/content/resume/contacts" }),
-  schema:
-    z.object({
+  schema: z
+    .object({
       ariaLabel: z.string(),
       ariaDescribedBy: z.string(),
       href: z.string().url(),
       icon: z.string(),
-    }).strict()
+    })
+    .strict(),
 });
 
-const work = defineCollection({
-  loader: glob({ pattern: "*.md", base: "./src/content/resume/work" }),
-  schema: z.object({
-    company: z.string(),
-    title: z.string(),
-    description: z.string(),
-    link: z.string().url(),
-    badges: z.array(z.string()),
-    logo: z.string(),
-    start: z.string(),
-    end: z.string().nullable(),
-  }).strict(),
+const experience = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/resume/experience" }),
+  schema: z
+    .object({
+      company: z.string(),
+      title: z.string(),
+      description: z.string(),
+      link: z.string().url(),
+      highlights: z.array(z.string()).optional().default([]),
+      badges: z.array(z.string()).optional().default([]),
+      logo: z.string(),
+      start: z.coerce.date(),
+      end: z.coerce.date().nullable(),
+    })
+    .strict(),
 });
 
 const education = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/content/resume/education" }),
-  schema: z.object({
-    school: z.string(),
-    degree: z.string(),
-    start: z.string(),
-    end: z.string(),
-  }).strict(),
+  schema: z
+    .object({
+      school: z.string(),
+      degree: z.string(),
+      start: z.string(),
+      end: z.string(),
+    })
+    .strict(),
 });
 
 const projects = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/content/projects" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    techStack: z.array(z.string()),
-    logo:z.string(),
-    link:z.object({
-      href: z.string().url(),
-      ariaLabel: z.string(),
-      ariaDescribedBy: z.string(),
+  schema: z
+    .object({
+      title: z.string(),
+      description: z.string(),
+      techStack: z.array(z.string()),
+      logo: z.string(),
+      link: z.object({
+        href: z.string().url(),
+        ariaLabel: z.string(),
+        ariaDescribedBy: z.string(),
+      }),
     })
-  }).strict(),
+    .strict(),
 });
 
-
-
 export const collections = {
-  basics,
-  work,
+  profile,
+  experience,
   education,
   contacts,
   projects,

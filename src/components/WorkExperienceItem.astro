@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import DateRange from "@components/DateRange.astro";
+
+type Props = {
+  xp: CollectionEntry<"experience">;
+};
+
+const { xp } = Astro.props;
+---
+
+<article>
+  <header>
+    <h3>{xp.data.company}</h3>
+    <DateRange start={xp.data.start} end={xp.data.end} />
+  </header>
+
+  <h4>{xp.data.title}</h4>
+  <p>{xp.data.description}</p>
+
+  {
+    xp.data.highlights?.length ? (
+      <ul>
+        {xp.data.highlights.map((h) => (
+          <li>{h}</li>
+        ))}
+      </ul>
+    ) : null
+  }
+
+  {
+    xp.data.badges?.length ? (
+      <ul>
+        {xp.data.badges.map((b) => (
+          <li>{b}</li>
+        ))}
+      </ul>
+    ) : null
+  }
+</article>
