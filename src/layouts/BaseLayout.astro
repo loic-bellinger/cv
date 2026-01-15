@@ -1,5 +1,10 @@
 ---
-import Navigation from "@components/Navigation.astro";
+import Header from "@components/Header.astro";
+
+interface Props {
+  pageTitle: string;
+}
+
 const { pageTitle } = Astro.props;
 ---
 
@@ -7,15 +12,13 @@ const { pageTitle } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>{pageTitle} — CV</title>
   </head>
   <body>
-    <header>
-      <Navigation />
-    </header>
-    <main>
+    <Header />
+    <main id="main">
       <slot />
     </main>
   </body>

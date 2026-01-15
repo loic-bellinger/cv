@@ -1,6 +1,17 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
+import Address from "@components/Address.astro";
+import { getCollection, getEntry } from "astro:content";
+const basics = await getEntry("basics", "basics");
+const contacts = await getCollection("contacts");
+if (!basics) {
+  throw new Error("Could not find basic informations");
+}
 ---
 
-<BaseLayout pageTitle={pageTitle} />
+<BaseLayout pageTitle={basics.data.name}>
+  <h1>{basics.data.name}</h1>
+  <p>{basics.data.about}</p>
+  <p>{basics.data.location.text}</p>
+  <Address contacts={contacts} />
+</BaseLayout>
