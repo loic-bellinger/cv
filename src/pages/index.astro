@@ -4,6 +4,7 @@ import Address from "@components/Address.astro";
 import WorkExperienceList from "@components/WorkExperienceList.astro";
 import { getCollection, getEntry } from "astro:content";
 import EducationList from "@components/EducationList.astro";
+import ResumeSection from "@components/ResumeSection.astro";
 
 const profile = await getEntry("profile", "profile");
 
@@ -28,21 +29,15 @@ const education = (await getCollection("education")).sort(
   <p>{profile.data.about}</p>
   <p>{profile.data.location.text}</p>
   <Address contacts={contacts} />
-
-  <section id="about">
-    <h2>About</h2>
+  <ResumeSection title="About" id="about">
     <p>
-      {profile.data.about}
+      {profile.data.summary}
     </p>
-  </section>
-
-  <section id="work-experience">
-    <h2>Work Experience</h2>
+  </ResumeSection>
+  <ResumeSection title="Work Experience" id="work-experience">
     <WorkExperienceList experience={experience} />
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
+  </ResumeSection>
+  <ResumeSection title="Education" id="education">
     <EducationList education={education} />
-  </section>
+  </ResumeSection>
 </BaseLayout>
