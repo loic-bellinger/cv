@@ -11,8 +11,16 @@ if (!profile) {
   throw new Error("Could not find basic profile information");
 }
 const contacts = await getCollection("contacts");
-const experience = await getCollection("experience");
-const education = await getCollection("education");
+const experience = (await getCollection("experience")).sort((a, b) => {
+  const aEnd = a.data.end ? a.data.end.valueOf() : Number.POSITIVE_INFINITY;
+  const bEnd = b.data.end ? b.data.end.valueOf() : Number.POSITIVE_INFINITY;
+
+  if (bEnd !== aEnd) return bEnd - aEnd;
+  return b.data.start.valueOf() - a.data.start.valueOf();
+});
+const education = (await getCollection("education")).sort(
+  (a, b) => b.data.end.valueOf() - a.data.end.valueOf(),
+);
 ---
 
 <BaseLayout pageTitle={profile.data.name}>
