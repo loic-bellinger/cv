@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from "astro:content";
+import EducationItem from "@components/EducationItem.astro";
+
+type Props = {
+  education: CollectionEntry<"education">[];
+};
+
+const { education }: Props = Astro.props;
+---
+
+{education.map((edu) => <EducationItem education={edu} />)}

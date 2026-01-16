@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from "astro:content";
+import DateRange from "@components/DateRange.astro";
+
+type Props = {
+  education: CollectionEntry<"education">;
+};
+
+const { education } = Astro.props;
+---
+
+<article>
+  <header>
+    <h3>{education.data.school}</h3>
+    <DateRange start={education.data.start} end={education.data.end} />
+  </header>
+  <p>{education.data.degree}</p>
+</article>
