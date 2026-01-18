@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+
 interface Props {
   contacts: CollectionEntry<"contacts">[];
 }
@@ -9,14 +10,12 @@ const { contacts } = Astro.props;
 
 <address>
   <ul>
-    {
-      contacts.map((contact) => (
+    {contacts.map((contact) => (
         <li>
           <a href={contact.data.href} aria-label={contact.data.ariaLabel}>
             {contact.id}
           </a>
         </li>
-      ))
-    }
+      ))}
   </ul>
 </address>

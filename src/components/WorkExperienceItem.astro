@@ -18,23 +18,19 @@ const { xp } = Astro.props;
   <h4>{xp.data.title}</h4>
   <p>{xp.data.description}</p>
 
-  {
-    xp.data.highlights?.length ? (
+  {xp.data.highlights?.length ? (
       <ul>
         {xp.data.highlights.map((h) => (
           <li>{h}</li>
         ))}
       </ul>
-    ) : null
-  }
+    ) : null}
 
-  {
-    xp.data.badges?.length ? (
+  {xp.data.badges?.length ? (
       <ul>
         {xp.data.badges.map((b) => (
           <li>{b}</li>
         ))}
       </ul>
-    ) : null
-  }
+    ) : null}
 </article>

@@ -7,20 +7,18 @@
     "defaultBranch": "main"
   },
   "files": {
-    "includes": ["**", "!!**/dist", "!**/pnpm-lock.yaml"],
+    "includes": ["**", "!**/.astro", "!!**/dist", "!**/pnpm-lock.yaml"],
     "ignoreUnknown": true
   },
   "html": {
-    "experimentalFullSupportEnabled": true
-  },
-  "json": {
+    "experimentalFullSupportEnabled": true,
     "formatter": {
-      "indentStyle": "space"
+      "enabled": true
     }
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "tab"
+    "indentStyle": "space"
   },
   "linter": {
     "enabled": true,

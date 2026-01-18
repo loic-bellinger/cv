@@ -15,7 +15,6 @@ const toISODate = (d: Date) => d.toISOString().slice(0, 10);
 ---
 
 <p>
-  <time datetime={toISODate(start)}>{startLabel}</time>&nbsp;&ndash;&nbsp;{
-    end ? <time datetime={toISODate(end)}>{endLabel}</time> : endLabel
-  }
+  <time datetime={toISODate(start)}>{startLabel}</time>&nbsp;&ndash;&nbsp;
+  {end ? <time datetime={toISODate(end)}>{endLabel}</time> : endLabel}
 </p>
