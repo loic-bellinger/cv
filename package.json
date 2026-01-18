@@ -4,20 +4,20 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "pnpm run check && astro check && astro build",
     "preview": "astro preview",
+    "check": "pnpm exec biome check",
+    "check:fix": "pnpm exec biome check --write --staged",
     "astro": "astro",
-    "prepare": "husky"
+    "prepare": "husky",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "astro": "^5.16.9"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "3.7.4",
-    "prettier-plugin-astro": "0.14.1",
-    "typescript": "^5.9.3"
+    "@biomejs/biome": "^2.3.11",
+    "husky": "^9.1.7"
   }
 }
