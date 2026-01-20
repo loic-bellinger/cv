@@ -2,15 +2,31 @@
   "name": "cv",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.28.1",
+  "engines": {
+    "node": ">=25.2.1",
+    "pnpm": ">=10.28.1"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=25.2.1",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.28.1",
+      "onFail": "error"
+    }
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "pnpm run check && astro check && astro build",
     "preview": "astro preview",
     "check": "pnpm exec biome check",
-    "check:fix": "pnpm exec biome check --write --staged",
+    "check:fix": "pnpm exec biome check --write --staged --no-errors-on-unmatched",
     "astro": "astro",
-    "prepare": "husky",
-    "preinstall": "npx only-allow pnpm"
+    "prepare": "husky"
   },
   "dependencies": {
     "astro": "^5.16.9"
