@@ -6,6 +6,7 @@ import ResumeSection from "@components/ResumeSection.astro";
 import WorkExperienceList from "@components/WorkExperienceList.astro";
 import { getLocaleCollection } from "@i18n/content";
 import { DEFAULT_LOCALE, LOCALES } from "@i18n/locales";
+import { useI18n } from "@i18n/utils";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
@@ -16,30 +17,29 @@ export function getStaticPaths() {
   }));
 }
 
-const currentLocale = Astro.currentLocale ?? DEFAULT_LOCALE;
-console.log("locale is", currentLocale);
+const { locale, t } = useI18n(Astro.currentLocale);
 
-const profile = await getEntry("profile", currentLocale);
+const profile = await getEntry("profile", locale);
 
 if (!profile) {
   throw new Error(
-    `Could not find basic profile information for locale: ${currentLocale}`,
+    `Could not find basic profile information for locale: ${locale}`,
   );
 }
 
-const contacts = await getLocaleCollection("contacts", currentLocale);
+const contacts = await getLocaleCollection("contacts", locale);
 
-const experience = (
-  await getLocaleCollection("experience", currentLocale)
-).sort((a, b) => {
-  const aEnd = a.data.end ? a.data.end.valueOf() : Number.POSITIVE_INFINITY;
-  const bEnd = b.data.end ? b.data.end.valueOf() : Number.POSITIVE_INFINITY;
+const experience = (await getLocaleCollection("experience", locale)).sort(
+  (a, b) => {
+    const aEnd = a.data.end ? a.data.end.valueOf() : Number.POSITIVE_INFINITY;
+    const bEnd = b.data.end ? b.data.end.valueOf() : Number.POSITIVE_INFINITY;
 
-  if (bEnd !== aEnd) return bEnd - aEnd;
-  return b.data.start.valueOf() - a.data.start.valueOf();
-});
+    if (bEnd !== aEnd) return bEnd - aEnd;
+    return b.data.start.valueOf() - a.data.start.valueOf();
+  },
+);
 
-const education = (await getLocaleCollection("education", currentLocale)).sort(
+const education = (await getLocaleCollection("education", locale)).sort(
   (a, b) => b.data.end.valueOf() - a.data.end.valueOf(),
 );
 ---
@@ -49,13 +49,13 @@ const education = (await getLocaleCollection("education", currentLocale)).sort(
   <p>{profile.data.about}</p>
   <p>{profile.data.location.text}</p>
   <Address contacts={contacts} />
-  <ResumeSection title="About" id="about">
+  <ResumeSection title={t("section.about")} id="about">
     <p>{profile.data.summary}</p>
   </ResumeSection>
-  <ResumeSection title="Work Experience" id="work-experience">
+  <ResumeSection title={t("section.xp")} id="work-experience">
     <WorkExperienceList experience={experience} />
   </ResumeSection>
-  <ResumeSection title="Education" id="education">
+  <ResumeSection title={t("section.education")} id="education">
     <EducationList education={education} />
   </ResumeSection>
 </BaseLayout>

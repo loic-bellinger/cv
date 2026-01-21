@@ -1,4 +1,6 @@
 ---
+import { useI18n } from "@i18n/utils";
+
 type Props = {
   start: Date;
   end: Date | null;
@@ -6,11 +8,10 @@ type Props = {
 
 const { start, end } = Astro.props;
 
-const fmt = new Intl.DateTimeFormat("en", { year: "numeric" });
+const { t, d } = useI18n(Astro.currentLocale);
 
-const startLabel = fmt.format(start);
-const endLabel = end ? fmt.format(end) : "Present";
-
+const startLabel = d(start);
+const endLabel = end ? d(end) : t("date.present");
 const toISODate = (d: Date) => d.toISOString().slice(0, 10);
 ---
 

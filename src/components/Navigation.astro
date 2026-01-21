@@ -1,15 +1,12 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { DEFAULT_LOCALE } from "@i18n/locales";
+import { useI18n } from "@i18n/utils";
 
-const currentLocale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const { t, path } = useI18n(Astro.currentLocale);
 ---
 
 <nav>
   <ul>
-    <li><a href={getRelativeLocaleUrl(currentLocale, "")}>Home</a></li>
-    <li>
-      <a href={getRelativeLocaleUrl(currentLocale, "projects")}>Projects</a>
-    </li>
+    <li><a href={path("")}>{t("nav.home")}</a></li>
+    <li><a href={path( "projects")}>{t("nav.projects")}</a></li>
   </ul>
 </nav>
