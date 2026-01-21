@@ -1,25 +1,45 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 import Address from "@components/Address.astro";
 import EducationList from "@components/EducationList.astro";
 import ResumeSection from "@components/ResumeSection.astro";
 import WorkExperienceList from "@components/WorkExperienceList.astro";
+import { getLocaleCollection } from "@i18n/content";
+import { DEFAULT_LOCALE, LOCALES } from "@i18n/locales";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const profile = await getEntry("profile", "profile");
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: {
+      locale: locale === DEFAULT_LOCALE ? undefined : locale,
+    },
+  }));
+}
+
+const currentLocale = Astro.currentLocale ?? DEFAULT_LOCALE;
+console.log("locale is", currentLocale);
+
+const profile = await getEntry("profile", currentLocale);
 
 if (!profile) {
-  throw new Error("Could not find basic profile information");
+  throw new Error(
+    `Could not find basic profile information for locale: ${currentLocale}`,
+  );
 }
-const contacts = await getCollection("contacts");
-const experience = (await getCollection("experience")).sort((a, b) => {
+
+const contacts = await getLocaleCollection("contacts", currentLocale);
+
+const experience = (
+  await getLocaleCollection("experience", currentLocale)
+).sort((a, b) => {
   const aEnd = a.data.end ? a.data.end.valueOf() : Number.POSITIVE_INFINITY;
   const bEnd = b.data.end ? b.data.end.valueOf() : Number.POSITIVE_INFINITY;
 
   if (bEnd !== aEnd) return bEnd - aEnd;
   return b.data.start.valueOf() - a.data.start.valueOf();
 });
-const education = (await getCollection("education")).sort(
+
+const education = (await getLocaleCollection("education", currentLocale)).sort(
   (a, b) => b.data.end.valueOf() - a.data.end.valueOf(),
 );
 ---

@@ -1,0 +1,33 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocaleCollection } from "@i18n/content";
+import { DEFAULT_LOCALE, LOCALES } from "@i18n/locales";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: {
+      locale: locale === DEFAULT_LOCALE ? undefined : locale,
+    },
+  }));
+}
+
+const currentLocale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const pageTitle = "Projects";
+const projects = await getLocaleCollection("projects", currentLocale);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <ul>
+    {projects.map((project) => {
+      const slug = project.id.split('/').pop();
+      return (
+        <li>
+          <a href={getRelativeLocaleUrl(currentLocale, `projects/${slug}`)}>
+            {project.data.title}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</BaseLayout>

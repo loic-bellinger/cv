@@ -1,1 +1,1 @@
-pnpm run check:fix
+pnpm run check:staged

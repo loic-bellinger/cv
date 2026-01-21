@@ -1,5 +1,6 @@
 ---
 import Header from "@components/Header.astro";
+import { DEFAULT_LOCALE } from "@i18n/locales";
 
 interface Props {
   pageTitle: string;
@@ -8,7 +9,7 @@ interface Props {
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale ?? DEFAULT_LOCALE}>
   <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
