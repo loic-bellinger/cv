@@ -15,4 +15,9 @@ type NormalizeLocales<T extends Locales> = {
 
 export type LocaleCode = NormalizeLocales<typeof LOCALES>;
 
+export const LOCALE_NAMES: Record<LocaleCode, string> = {
+  en: "English",
+  fr: "Français",
+};
+
 export const DEFAULT_LOCALE = "en" as const satisfies LocaleCode;

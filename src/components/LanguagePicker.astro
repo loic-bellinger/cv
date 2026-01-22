@@ -1,0 +1,20 @@
+---
+import { LOCALES, LOCALE_NAMES } from "@i18n/locales";
+import { useI18n } from "@i18n/utils";
+
+const { locale, translatePath } = useI18n(Astro.currentLocale);
+const otherLocales = LOCALES.filter((l) => l !== locale);
+---
+
+<ul>
+  {otherLocales.map((l) =>  (
+      <li>
+        <a
+          href={translatePath(l, Astro.url.pathname)}
+          hreflang={l}
+          lang={l}
+          rel="alternate"
+        >{LOCALE_NAMES[l]}</a>
+      </li>
+    ))}
+</ul>

@@ -1,4 +1,5 @@
 ---
+import LanguagePicker from "@components//LanguagePicker.astro";
 import Navigation from "@components/Navigation.astro";
 import { useI18n } from "@i18n/utils";
 
@@ -8,4 +9,5 @@ const { t } = useI18n(Astro.currentLocale);
 <header>
   <a href="#main">{t("skip_to_main")}</a>
   <Navigation />
+  <LanguagePicker />
 </header>

@@ -1,12 +1,12 @@
 ---
 import { useI18n } from "@i18n/utils";
 
-const { t, path } = useI18n(Astro.currentLocale);
+const { t, localizePath } = useI18n(Astro.currentLocale);
 ---
 
 <nav>
   <ul>
-    <li><a href={path("")}>{t("nav.home")}</a></li>
-    <li><a href={path( "projects")}>{t("nav.projects")}</a></li>
+    <li><a href={localizePath("")}>{t("nav.home")}</a></li>
+    <li><a href={localizePath( "projects")}>{t("nav.projects")}</a></li>
   </ul>
 </nav>
