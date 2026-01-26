@@ -7,6 +7,8 @@ export const i18n = {
   use(astroLocale: string | undefined) {
     const locale = i18nConfig.normalizeLocale(astroLocale) as LocaleCode;
 
+    const otherLocales = i18nConfig.codes.filter((c) => c !== locale);
+
     function href(path: string) {
       return getRelativeLocaleUrl(locale, path);
     }
@@ -26,6 +28,11 @@ export const i18n = {
       return new Intl.DateTimeFormat(locale, options).format(date);
     }
 
-    return { locale, href, hrefTo, formatDate } as const;
+    return {
+      href,
+      hrefTo,
+      formatDate,
+      otherLocales,
+    } as const;
   },
 } as const;

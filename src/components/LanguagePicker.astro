@@ -1,9 +1,7 @@
 ---
 import { i18n } from "@i18n/runtime";
 
-const { locale, hrefTo } = i18n.use(Astro.currentLocale);
-
-const otherLocales = i18n.codes.filter((l) => l !== locale);
+const { otherLocales, hrefTo } = i18n.use(Astro.currentLocale);
 ---
 
 <ul>
