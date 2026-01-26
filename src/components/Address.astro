@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  contacts: CollectionEntry<"contacts">[];
+  contacts: CollectionEntry<"resume">["data"]["contacts"];
 }
 
 const { contacts } = Astro.props;
@@ -10,12 +10,17 @@ const { contacts } = Astro.props;
 
 <address>
   <ul>
-    {contacts.map((contact) => (
+    {contacts.map((contact) => {
+      const descId = `${contact.id}-desc`
+      return (
         <li>
-          <a href={contact.data.href} aria-label={contact.data.ariaLabel}>
-            {contact.id}
+          <a href={contact.href} aria-describedby={descId} aria-label={contact.ariaLabel}>
+            {contact.label}
           </a>
+          <span id={descId} role="tooltip">
+              {contact.ariaDescribedBy}
+            </span>
         </li>
-      ))}
+      )})}
   </ul>
 </address>

@@ -1,17 +1,17 @@
 ---
-import { useI18n } from "@i18n/utils";
+import { i18n } from "@i18n/runtime";
 
 type Props = {
   start: Date;
   end: Date | null;
+  presentLabel: string;
 };
 
-const { start, end } = Astro.props;
+const { start, end, presentLabel } = Astro.props;
+const { formatDate } = i18n.use(Astro.currentLocale);
 
-const { t, d } = useI18n(Astro.currentLocale);
-
-const startLabel = d(start);
-const endLabel = end ? d(end) : t("date.present");
+const startLabel = formatDate(start);
+const endLabel = end ? formatDate(end) : presentLabel;
 const toISODate = (d: Date) => d.toISOString().slice(0, 10);
 ---
 

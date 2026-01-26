@@ -1,24 +1,31 @@
 ---
-import Header from "@components/Header.astro";
-import { DEFAULT_LOCALE } from "@i18n/locales";
+import type { CollectionEntry } from "astro:content";
+import LanguagePicker from "@components/LanguagePicker.astro";
+import Navigation from "@components/Navigation.astro";
+import { i18nConfig } from "@i18n/config";
 
 interface Props {
   pageTitle: string;
+  ui: CollectionEntry<"ui">["data"];
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle, ui } = Astro.props;
 ---
 
-<html lang={Astro.currentLocale ?? DEFAULT_LOCALE}>
+<html lang={i18nConfig.normalizeLocale(Astro.currentLocale)}>
   <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content={Astro.generator}>
-    <title>{pageTitle} — CV</title>
+    <title>{pageTitle} — {ui.meta.titleSuffix}</title>
   </head>
   <body>
-    <Header />
+    <header>
+      <a href="#main">{ui.a11y.skipToMain}</a>
+      <Navigation nav={ui.nav} />
+      <LanguagePicker />
+    </header>
     <main id="main" tabindex="-1">
       <slot />
     </main>

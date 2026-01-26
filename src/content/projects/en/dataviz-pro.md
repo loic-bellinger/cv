@@ -9,6 +9,6 @@ techStack:
 logo: "DataVizLogo"
 link:
   href: "https://datavizpro.example.com"
-  ariaLabel: ""
-  ariaDescribedBy: ""
+  ariaLabel: "Open DataViz Pro demo"
+  ariaDescribedBy: "Opens the online demo"
 ---

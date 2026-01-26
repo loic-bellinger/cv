@@ -4,15 +4,20 @@ import DateRange from "@components/DateRange.astro";
 
 type Props = {
   xp: CollectionEntry<"experience">;
+  presentLabel: string;
 };
 
-const { xp } = Astro.props;
+const { xp, presentLabel } = Astro.props;
 ---
 
 <article>
   <header>
     <h3>{xp.data.company}</h3>
-    <DateRange start={xp.data.start} end={xp.data.end} />
+    <DateRange
+      start={xp.data.start}
+      end={xp.data.end}
+      presentLabel={presentLabel}
+    />
   </header>
 
   <h4>{xp.data.title}</h4>

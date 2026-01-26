@@ -9,6 +9,6 @@ techStack:
 logo: "ChatFlowLogo"
 link:
   href: "https://chatflow.example.com"
-  ariaLabel: ""
-  ariaDescribedBy: ""
+  ariaLabel: "Open ChatFlow"
+  ariaDescribedBy: "Opens the ChatFlow project website"
 ---

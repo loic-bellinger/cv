@@ -1,0 +1,15 @@
+{
+  "nav": { "home": "Accueil", "projects": "Projets" },
+  "section": {
+    "about": "À propos",
+    "xp": "Expérience",
+    "education": "Formation"
+  },
+  "page": { "projects": { "title": "Projets" } },
+  "a11y": {
+    "skipToMain": "Aller au contenu principal",
+    "opensNewTab": "Ouvre dans un nouvel onglet"
+  },
+  "date": { "present": "Aujourd’hui" },
+  "meta": { "titleSuffix": "CV" }
+}

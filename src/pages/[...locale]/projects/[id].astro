@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
-import { DEFAULT_LOCALE } from "@i18n/locales";
+import { i18n } from "@i18n/runtime";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getEntryDataByLocale } from "@utils/data";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
 
     return {
       params: {
-        locale: lang === DEFAULT_LOCALE ? undefined : lang,
+        locale: lang === i18n.defaultLocale ? undefined : lang,
         id: slug,
       },
       props: { project },
@@ -21,8 +22,10 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+
+const ui = await getEntryDataByLocale("ui", Astro.currentLocale);
 ---
 
-<BaseLayout pageTitle={project.data.title}>
+<BaseLayout pageTitle={project.data.title} ui={ui}>
   <Content />
 </BaseLayout>

@@ -1,0 +1,59 @@
+{
+  "name": "Alex Johnson",
+  "initials": "AJ",
+  "about": "Detail-oriented Full Stack Developer passionate about building scalable web applications and intuitive user experiences.",
+  "summary": "Full Stack Developer with 8+ years of experience in designing and implementing high-performance React frontends and robust Node.js backends. Skilled in agile methodologies, cloud deployment, and team collaboration.",
+  "avatarUrl": "/avatar.png",
+  "location": {
+    "text": "Berlin, Germany, CEST",
+    "href": "https://www.google.com/maps/place/Berlin",
+    "ariaLabel": "View map of Berlin, Germany",
+    "ariaDescribedBy": "Opens Google Maps in a new tab"
+  },
+  "contacts": [
+    {
+      "id": "github",
+      "href": "https://github.com/alexjohnson",
+      "label": "GitHub",
+      "icon": "github",
+      "ariaLabel": "Open GitHub profile",
+      "ariaDescribedBy": "Opens in a new tab"
+    },
+    {
+      "id": "linkedin",
+      "href": "https://www.linkedin.com/in/alex-johnson-dev/",
+      "label": "LinkedIn",
+      "icon": "linkedin",
+      "ariaLabel": "Open LinkedIn profile",
+      "ariaDescribedBy": "Opens in a new tab"
+    },
+    {
+      "id": "mail",
+      "href": "mailto:alex.johnson@example.com",
+      "label": "Email",
+      "icon": "mail",
+      "ariaLabel": "Send an email",
+      "ariaDescribedBy": "Opens your email client"
+    },
+    {
+      "id": "phone",
+      "href": "tel:+4915123456789",
+      "label": "Phone",
+      "icon": "phone",
+      "ariaLabel": "Call by phone",
+      "ariaDescribedBy": "Opens your phone dialer"
+    }
+  ],
+  "skills": [
+    "JavaScript/TypeScript",
+    "React",
+    "Vue.js",
+    "Node.js",
+    "GraphQL",
+    "REST APIs",
+    "Docker & Kubernetes",
+    "AWS & Azure",
+    "Agile/Scrum",
+    "Tailwind CSS"
+  ]
+}

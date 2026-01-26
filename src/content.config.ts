@@ -2,34 +2,89 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-const profile = defineCollection({
-  loader: glob({ pattern: "*.md", base: "./src/content/profile" }),
+const text = z.string().trim().min(1);
+const href = z.union([
+  z.string().url(),
+  z.string().startsWith("mailto:"),
+  z.string().startsWith("tel:"),
+]);
+
+const ui = defineCollection({
+  loader: glob({ pattern: "*.json", base: "./src/content/ui" }),
   schema: z
     .object({
-      name: z.string(),
-      about: z.string(),
-      initials: z.string(),
-      summary: z.string(),
-      location: z.object({
-        text: z.string(),
-        ariaLabel: z.string(),
-        ariaDescribedBy: z.string(),
-        href: z.string().url(),
-      }),
-      avatarUrl: z.string(),
-      skills: z.array(z.string()),
+      meta: z
+        .object({
+          titleSuffix: text,
+        })
+        .strict(),
+      nav: z
+        .object({
+          home: text,
+          projects: text,
+        })
+        .strict(),
+      section: z
+        .object({
+          about: text,
+          xp: text,
+          education: text,
+        })
+        .strict(),
+      page: z
+        .object({
+          projects: z
+            .object({
+              title: text,
+            })
+            .strict(),
+        })
+        .strict(),
+      a11y: z
+        .object({
+          skipToMain: text,
+          opensNewTab: text,
+        })
+        .strict(),
+      date: z
+        .object({
+          present: text,
+        })
+        .strict(),
     })
     .strict(),
 });
 
-const contacts = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/contacts" }),
+const resume = defineCollection({
+  loader: glob({ pattern: "*.json", base: "./src/content/resume" }),
   schema: z
     .object({
-      ariaLabel: z.string(),
-      ariaDescribedBy: z.string(),
-      href: z.string().url(),
-      icon: z.string(),
+      name: text,
+      about: text,
+      initials: text,
+      summary: text,
+      avatarUrl: text.url().or(text.startsWith("/")),
+      location: z
+        .object({
+          text: text,
+          href: href,
+          ariaLabel: text,
+          ariaDescribedBy: text,
+        })
+        .strict(),
+      contacts: z.array(
+        z
+          .object({
+            id: text,
+            href: href,
+            label: text,
+            icon: text,
+            ariaLabel: text,
+            ariaDescribedBy: text,
+          })
+          .strict(),
+      ),
+      skills: z.array(text),
     })
     .strict(),
 });
@@ -38,13 +93,13 @@ const experience = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/experience" }),
   schema: z
     .object({
-      company: z.string(),
-      title: z.string(),
-      description: z.string(),
-      link: z.string().url(),
-      highlights: z.array(z.string()).optional().default([]),
-      badges: z.array(z.string()).optional().default([]),
-      logo: z.string(),
+      company: text,
+      title: text,
+      description: text,
+      link: text.url(),
+      highlights: z.array(text).default([]),
+      badges: z.array(text).default([]),
+      logo: text,
       start: z.coerce.date(),
       end: z.coerce.date().nullable(),
     })
@@ -55,8 +110,8 @@ const education = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/education" }),
   schema: z
     .object({
-      school: z.string(),
-      degree: z.string(),
+      school: text,
+      degree: text,
       start: z.coerce.date(),
       end: z.coerce.date(),
     })
@@ -67,23 +122,25 @@ const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: z
     .object({
-      title: z.string(),
-      description: z.string(),
-      techStack: z.array(z.string()),
-      logo: z.string(),
-      link: z.object({
-        href: z.string().url(),
-        ariaLabel: z.string(),
-        ariaDescribedBy: z.string(),
-      }),
+      title: text,
+      description: text,
+      techStack: z.array(text),
+      logo: text,
+      link: z
+        .object({
+          href: href,
+          ariaLabel: text,
+          ariaDescribedBy: text,
+        })
+        .strict(),
     })
     .strict(),
 });
 
 export const collections = {
-  profile,
+  ui,
+  resume,
   experience,
   education,
-  contacts,
   projects,
 };

@@ -1,12 +1,18 @@
 ---
-import { useI18n } from "@i18n/utils";
+import type { CollectionEntry } from "astro:content";
+import { i18n } from "@i18n/runtime";
 
-const { t, localizePath } = useI18n(Astro.currentLocale);
+interface Props {
+  nav: CollectionEntry<"ui">["data"]["nav"];
+}
+
+const { nav } = Astro.props;
+const { href } = i18n.use(Astro.currentLocale);
 ---
 
 <nav>
   <ul>
-    <li><a href={localizePath("")}>{t("nav.home")}</a></li>
-    <li><a href={localizePath( "projects")}>{t("nav.projects")}</a></li>
+    <li><a href={href("")}>{nav.home}</a></li>
+    <li><a href={href("projects")}>{nav.projects}</a></li>
   </ul>
 </nav>

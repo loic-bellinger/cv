@@ -1,28 +1,31 @@
 ---
-import { getLocaleCollection } from "@i18n/content";
-import { DEFAULT_LOCALE, LOCALES } from "@i18n/locales";
-import { useI18n } from "@i18n/utils";
+import { i18n } from "@i18n/runtime";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollectionByLocale, getEntryDataByLocale } from "@utils/data";
 
 export function getStaticPaths() {
-  return LOCALES.map((locale) => ({
+  return i18n.codes.map((locale) => ({
     params: {
-      locale: locale === DEFAULT_LOCALE ? undefined : locale,
+      locale: locale === i18n.defaultLocale ? undefined : locale,
     },
   }));
 }
 
-const { locale, t, localizePath } = useI18n(Astro.currentLocale);
-const projects = await getLocaleCollection("projects", locale);
+const { href } = i18n.use(Astro.currentLocale);
+
+const [ui, projects] = await Promise.all([
+  getEntryDataByLocale("ui", Astro.currentLocale),
+  getCollectionByLocale("projects", Astro.currentLocale),
+]);
 ---
 
-<BaseLayout pageTitle={t("page.projects.title")}>
+<BaseLayout pageTitle={ui.page.projects.title} ui={ui}>
   <ul>
     {projects.map((project) => {
       const slug = project.id.split('/').pop();
       return (
         <li>
-          <a href={localizePath(`projects/${slug}`)}>
+          <a href={href(`projects/${slug}`)}>
             {project.data.title}
           </a>
         </li>

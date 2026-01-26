@@ -9,6 +9,6 @@ techStack:
 logo: "ResumeBuilderLogo"
 link:
   href: "https://github.com/alexjohnson/resume-builder"
-  ariaLabel: ""
-  ariaDescribedBy: ""
+  ariaLabel: "Open Resume Builder source code"
+  ariaDescribedBy: "Opens GitHub"
 ---

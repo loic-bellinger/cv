@@ -4,15 +4,20 @@ import DateRange from "@components/DateRange.astro";
 
 type Props = {
   education: CollectionEntry<"education">;
+  presentLabel: string;
 };
 
-const { education } = Astro.props;
+const { education, presentLabel } = Astro.props;
 ---
 
 <article>
   <header>
     <h3>{education.data.school}</h3>
-    <DateRange start={education.data.start} end={education.data.end} />
+    <DateRange
+      start={education.data.start}
+      end={education.data.end}
+      presentLabel={presentLabel}
+    />
   </header>
   <p>{education.data.degree}</p>
 </article>
