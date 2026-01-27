@@ -16,7 +16,8 @@ export function getStaticPaths() {
   }));
 }
 
-const [ui, resume, experienceRaw, educationRaw] = await Promise.all([
+const [meta, ui, resume, experienceRaw, educationRaw] = await Promise.all([
+  getEntryDataByLocale("meta", Astro.currentLocale),
   getEntryDataByLocale("ui", Astro.currentLocale),
   getEntryDataByLocale("resume", Astro.currentLocale),
   getCollectionByLocale("experience", Astro.currentLocale),
@@ -27,7 +28,12 @@ const experience = sortExperience(experienceRaw);
 const education = sortEducation(educationRaw);
 ---
 
-<BaseLayout pageTitle={resume.name} ui={ui}>
+<BaseLayout
+  title={meta.page.resume.title}
+  description={meta.page.resume.description}
+  meta={meta}
+  ui={ui}
+>
   <h1>{resume.name}</h1>
   <p>{resume.about}</p>
   <p>

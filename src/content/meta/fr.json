@@ -1,0 +1,14 @@
+{
+  "siteName": "Alex Johnson",
+  "twitterHandle": "@alexj_dev",
+  "page": {
+    "resume": {
+      "title": "Développeur Full Stack Senior",
+      "description": "Alex Johnson est un Développeur Full Stack Senior spécialisé en React, Node.js et architecture évolutive. Basé à Berlin, disponible pour mission."
+    },
+    "projects": {
+      "title": "Projets d'Ingénierie Logicielle & Open Source",
+      "description": "Découvrez mon portfolio d'applications web full-stack, incluant des projets React, Node.js et Astro. Accent sur la performance et l'accessibilité."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "siteName": "Alex Johnson",
+  "twitterHandle": "@alexj_dev",
+  "page": {
+    "resume": {
+      "title": "Senior Full Stack Developer",
+      "description": "Alex Johnson is a Senior Full Stack Developer specializing in React, Node.js, and scalable architecture. Based in Berlin, available for hire."
+    },
+    "projects": {
+      "title": "Software Engineering Projects & Open Source",
+      "description": "Explore my portfolio of full-stack web applications, including React, Node.js, and Astro projects. Focusing on performance and accessibility."
+    }
+  }
+}

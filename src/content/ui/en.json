@@ -5,11 +5,9 @@
     "xp": "Work Experience",
     "education": "Education"
   },
-  "page": { "projects": { "title": "Projects" } },
   "a11y": {
     "skipToMain": "Skip to main content",
     "opensNewTab": "Opens in a new tab"
   },
-  "date": { "present": "Present" },
-  "meta": { "titleSuffix": "CV" }
+  "date": { "present": "Present" }
 }

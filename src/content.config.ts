@@ -8,16 +8,21 @@ const href = z.union([
   z.string().startsWith("mailto:"),
   z.string().startsWith("tel:"),
 ]);
+const seoTitle = z
+  .string()
+  .trim()
+  .min(10, "Title too short for SEO")
+  .max(55, "Title too long (max 55 chars)");
+const seoDesc = z
+  .string()
+  .trim()
+  .min(50, "Description too short")
+  .max(155, "Description too long (max 155 chars)");
 
 const ui = defineCollection({
   loader: glob({ pattern: "*.json", base: "./src/content/ui" }),
   schema: z
     .object({
-      meta: z
-        .object({
-          titleSuffix: text,
-        })
-        .strict(),
       nav: z
         .object({
           home: text,
@@ -31,15 +36,6 @@ const ui = defineCollection({
           education: text,
         })
         .strict(),
-      page: z
-        .object({
-          projects: z
-            .object({
-              title: text,
-            })
-            .strict(),
-        })
-        .strict(),
       a11y: z
         .object({
           skipToMain: text,
@@ -49,6 +45,33 @@ const ui = defineCollection({
       date: z
         .object({
           present: text,
+        })
+        .strict(),
+    })
+    .strict(),
+});
+
+const meta = defineCollection({
+  loader: glob({ pattern: "*.json", base: "./src/content/meta" }),
+  schema: z
+    .object({
+      siteName: text,
+      defaultImage: z.string().default("/og-default.jpg"),
+      twitterHandle: text.optional(),
+      page: z
+        .object({
+          resume: z
+            .object({
+              title: seoTitle,
+              description: seoDesc,
+            })
+            .strict(),
+          projects: z
+            .object({
+              title: seoTitle,
+              description: seoDesc,
+            })
+            .strict(),
         })
         .strict(),
     })
@@ -139,6 +162,7 @@ const projects = defineCollection({
 
 export const collections = {
   ui,
+  meta,
   resume,
   experience,
   education,

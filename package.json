@@ -23,7 +23,7 @@
     "dev": "astro dev",
     "check": "pnpm exec biome check .",
     "check:fix": "pnpm exec biome check --write .",
-    "check:staged": "pnpm exec biome check --write --staged --no-errors-on-unmatched",
+    "check:staged": "pnpm exec biome check --staged --no-errors-on-unmatched",
     "build": "pnpm run check && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",

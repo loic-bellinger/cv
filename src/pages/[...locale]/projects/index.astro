@@ -13,13 +13,19 @@ export function getStaticPaths() {
 
 const { href } = i18n.use(Astro.currentLocale);
 
-const [ui, projects] = await Promise.all([
+const [meta, ui, projects] = await Promise.all([
+  getEntryDataByLocale("meta", Astro.currentLocale),
   getEntryDataByLocale("ui", Astro.currentLocale),
   getCollectionByLocale("projects", Astro.currentLocale),
 ]);
 ---
 
-<BaseLayout pageTitle={ui.page.projects.title} ui={ui}>
+<BaseLayout
+  title={meta.page.projects.title}
+  description={meta.page.projects.description}
+  meta={meta}
+  ui={ui}
+>
   <ul>
     {projects.map((project) => {
       const slug = project.id.split('/').pop();

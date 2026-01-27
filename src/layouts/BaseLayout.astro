@@ -1,25 +1,30 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import Head from "@components/Head.astro";
 import LanguagePicker from "@components/LanguagePicker.astro";
 import Navigation from "@components/Navigation.astro";
 import { i18nConfig } from "@i18n/config";
 
 interface Props {
-  pageTitle: string;
+  title: string;
+  description: string;
+  image?: string | undefined;
+  meta: CollectionEntry<"meta">["data"];
   ui: CollectionEntry<"ui">["data"];
 }
 
-const { pageTitle, ui } = Astro.props;
+const { title, description, image, meta, ui } = Astro.props;
+const currentLocale = i18nConfig.normalizeLocale(Astro.currentLocale);
 ---
 
-<html lang={i18nConfig.normalizeLocale(Astro.currentLocale)}>
-  <head>
-    <meta charset="utf-8">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content={Astro.generator}>
-    <title>{pageTitle} — {ui.meta.titleSuffix}</title>
-  </head>
+<html lang={currentLocale}>
+  <Head
+    title={title}
+    description={description}
+    image={image}
+    meta={meta}
+    locale={currentLocale}
+  />
   <body>
     <header>
       <a href="#main">{ui.a11y.skipToMain}</a>

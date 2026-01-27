@@ -23,9 +23,17 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const ui = await getEntryDataByLocale("ui", Astro.currentLocale);
+const [meta, ui] = await Promise.all([
+  getEntryDataByLocale("meta", Astro.currentLocale),
+  getEntryDataByLocale("ui", Astro.currentLocale),
+]);
 ---
 
-<BaseLayout pageTitle={project.data.title} ui={ui}>
+<BaseLayout
+  title={project.data.title}
+  description={project.data.description}
+  meta={meta}
+  ui={ui}
+>
   <Content />
 </BaseLayout>
