@@ -1,0 +1,73 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
