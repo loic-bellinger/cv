@@ -1,6 +1,6 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import { i18nConfig } from "./src/i18n/config";
 
 export default defineConfig({
@@ -17,4 +17,18 @@ export default defineConfig({
       i18n: i18nConfig.sitemap,
     }),
   ],
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Inter",
+        cssVariable: "--font-inter",
+        weights: [400],
+        styles: ["normal"],
+        subsets: ["latin"],
+        formats: ["woff2"],
+        display: "swap",
+      },
+    ],
+  },
 });
