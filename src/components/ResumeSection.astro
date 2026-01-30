@@ -4,7 +4,7 @@ const { id, title }: Props = Astro.props;
 const headingId = `${id}-title`;
 ---
 
-<section id={id} aria-labelledby={headingId}>
+<section id={id} aria-labelledby={headingId} class="flow">
   <h2 id={headingId}>{title}</h2>
   <slot />
 </section>

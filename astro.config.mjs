@@ -28,6 +28,7 @@ export default defineConfig({
         subsets: ["latin"],
         formats: ["woff2"],
         display: "swap",
+        featureSettings: "'liga' 1, 'calt' 1",
       },
     ],
   },

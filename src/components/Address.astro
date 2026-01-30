@@ -9,7 +9,7 @@ const { contacts } = Astro.props;
 ---
 
 <address>
-  <ul>
+  <ul role="list">
     {contacts.map((contact) => {
       const descId = `${contact.id}-desc`
       return (
