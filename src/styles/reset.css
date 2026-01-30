@@ -63,8 +63,8 @@ button {
   background-color: transparent;
 }
 
-ol,
-ul {
+ol[role="list"],
+ul[role="list"] {
   list-style: none;
 }
 

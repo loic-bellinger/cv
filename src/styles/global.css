@@ -1,3 +1,102 @@
+:root {
+  /*
+  Utopia fluid space scale
+
+  @link https://utopia.fyi/space/calculator?c=360,16,1.2,1280,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  */
+  --space-3xs: clamp(0.25rem, 0.2255rem + 0.1087vi, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4755rem + 0.1087vi, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7011rem + 0.2174vi, 0.875rem);
+  --space-s: clamp(1rem, 0.9511rem + 0.2174vi, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4266rem + 0.3261vi, 1.6875rem);
+  --space-l: clamp(2rem, 1.9022rem + 0.4348vi, 2.25rem);
+  --space-xl: clamp(3rem, 2.8533rem + 0.6522vi, 3.375rem);
+  --space-2xl: clamp(4rem, 3.8043rem + 0.8696vi, 4.5rem);
+  --space-3xl: clamp(6rem, 5.7065rem + 1.3043vi, 6.75rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1277rem + 0.5435vi, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3533rem + 0.6522vi, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6033rem + 0.6522vi, 1.125rem);
+  --space-s-m: clamp(1rem, 0.731rem + 1.1957vi, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.2065rem + 1.3043vi, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.462rem + 2.3913vi, 3.375rem);
+  --space-xl-2xl: clamp(3rem, 2.413rem + 2.6087vi, 4.5rem);
+  --space-2xl-3xl: clamp(4rem, 2.9239rem + 4.7826vi, 6.75rem);
+
+  /* Fluid type scale
+
+   @link https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=360&minRatio=1.2&maxFontSize=18&maxWidth=1280&maxRatio=1.25&steps=sm%2Cbase%2Cmd%2Clg%2Cxl%2Cxxl%2Cxxxl&baseStep=base&prefix=fs&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=16&decimals=4&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1280
+   */
+  --fs-sm: clamp(0.8333rem, 0.1159vi + 0.8072rem, 0.9rem);
+  --fs-base: clamp(1rem, 0.2174vi + 0.9511rem, 1.125rem);
+  --fs-md: clamp(1.2rem, 0.3587vi + 1.1193rem, 1.4063rem);
+  --fs-lg: clamp(1.44rem, 0.5527vi + 1.3156rem, 1.7578rem);
+  --fs-xl: clamp(1.728rem, 0.8161vi + 1.5444rem, 2.1973rem);
+  --fs-xxl: clamp(2.0736rem, 1.1704vi + 1.8103rem, 2.7466rem);
+  --fs-xxxl: clamp(2.4883rem, 1.6433vi + 2.1186rem, 3.4332rem);
+
+  --measure-m: 45ch;
+  --measure-l: 75ch;
+
+  --leading-fine: 1.1;
+  --leading: 1.5;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+
+  --flow-space: var(--space-m);
+
+  --wrapper-max-width: 1680px;
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-fine);
+}
+
+:is(h1, h2, h3, h4) + * {
+  --flow-space: var(--space-s);
+}
+
 body {
+  font-size: var(--fs-base);
   font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: var(--fs-xxl);
+}
+
+h2 {
+  font-size: var(--fs-xl);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--fs-md);
+}
+
+a:not([class]):hover {
+  text-underline-offset: 0.2ex;
+}
+
+.wrapper {
+  margin-inline: auto;
+  max-width: var(--wrapper-max-width);
+  padding-inline: var(--gutter-wrapper-inline, var(--space-s-m));
+  position: relative;
 }

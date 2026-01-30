@@ -11,7 +11,7 @@ const { href } = i18n.use(Astro.currentLocale);
 ---
 
 <nav>
-  <ul>
+  <ul role="list">
     <li><a href={href("")}>{nav.home}</a></li>
     <li><a href={href("projects")}>{nav.projects}</a></li>
   </ul>

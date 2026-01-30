@@ -10,7 +10,7 @@ type Props = {
 const { xp, presentLabel } = Astro.props;
 ---
 
-<article>
+<article class="flow">
   <header>
     <h3>{xp.data.company}</h3>
     <DateRange
@@ -24,7 +24,7 @@ const { xp, presentLabel } = Astro.props;
   <p>{xp.data.description}</p>
 
   {xp.data.highlights?.length ? (
-      <ul>
+      <ul role="list">
         {xp.data.highlights.map((h) => (
           <li>{h}</li>
         ))}
@@ -32,7 +32,7 @@ const { xp, presentLabel } = Astro.props;
     ) : null}
 
   {xp.data.badges?.length ? (
-      <ul>
+      <ul role="list">
         {xp.data.badges.map((b) => (
           <li>{b}</li>
         ))}
