@@ -28,13 +28,27 @@ const currentLocale = i18nConfig.normalizeLocale(Astro.currentLocale);
     locale={currentLocale}
   />
   <body>
+    <a href="#content" class="skip-link">{ui.a11y.skipToMain}</a>
     <header>
-      <a href="#main">{ui.a11y.skipToMain}</a>
       <Navigation nav={ui.nav} />
       <LanguagePicker />
     </header>
-    <main id="main" tabindex="-1" class="wrapper flow">
+    <main id="content" tabindex="-1" class="wrapper flow">
       <slot />
     </main>
   </body>
 </html>
+
+<style>
+.skip-link:not(:focus):not(:active) {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+main:focus {
+  outline: none;
+}
+</style>

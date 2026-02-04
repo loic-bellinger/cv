@@ -100,3 +100,8 @@ a:not([class]):hover {
   padding-inline: var(--gutter-wrapper-inline, var(--space-s-m));
   position: relative;
 }
+
+:focus {
+  outline: 1px dotted currentColor;
+  outline-offset: 0.2rem;
+}
