@@ -8,11 +8,28 @@ interface Props {
 
 const { nav } = Astro.props;
 const { href } = i18n.use(Astro.currentLocale);
+const links = [
+  { label: nav.home, path: "" },
+  { label: nav.projects, path: "projects" },
+];
 ---
 
 <nav>
   <ul role="list">
-    <li><a href={href("")}>{nav.home}</a></li>
-    <li><a href={href("projects")}>{nav.projects}</a></li>
+    {links.map(({ label, path }) => {
+      const targetUrl = href(path);
+      const isActive = targetUrl === Astro.url.pathname;
+
+      return (
+        <li>
+          <a
+            href={targetUrl}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      );
+    })}
   </ul>
 </nav>

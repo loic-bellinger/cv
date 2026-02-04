@@ -5,6 +5,7 @@ import { i18nConfig } from "./src/i18n/config";
 
 export default defineConfig({
   site: "https://example.com",
+  trailingSlash: "always",
   i18n: {
     locales: i18nConfig.codes,
     defaultLocale: i18nConfig.defaultLocale,
